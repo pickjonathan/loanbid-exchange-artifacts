@@ -1,12 +1,18 @@
 # LoanBid Exchange Artifacts
 
-Two-sided AI lending marketplace concept package.
+AI-powered two-sided lending marketplace package.
 
-## Contents
-- `PRD.md` — Product requirements document (v1)
-- `ARCHITECTURE.md` — System design + mermaid diagrams
-- `GTM_PLAN.md` — Go-to-market plan for first lenders/borrowers
-- `ROADMAP_90_DAYS.md` — Delivery milestones and KPIs
+## Approved Direction
+- Consumer personal loans
+- Israel launch
+- Indicative pre-offers in V1
+- Anonymized offers first, reveal lender after shortlist
+- Hybrid revenue: lead fee + funded success fee
 
-## Working Concept
-Borrowers publish standardized loan requests. Eligible financial institutions submit bids (APR, fees, term, conditions). Borrowers compare, select, and proceed to underwriting/disbursement.
+## Documents
+- `PRD.md` — Product requirements (v2)
+- `ARCHITECTURE.md` — System architecture and flows
+- `GTM_PLAN.md` — Market entry and liquidity strategy
+- `ROADMAP_90_DAYS.md` — Delivery milestones
+- `AGENT_IMPLEMENTATION_REVIEW.md` — Inputs from each specialist agent role
+- `SKILLS_RUN_LOG.md` — Related skills executed/used

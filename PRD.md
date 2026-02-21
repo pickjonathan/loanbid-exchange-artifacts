@@ -1,72 +1,75 @@
-# PRD v1 — LoanBid Exchange
+# PRD v2 — LoanBid Exchange (Israel, Consumer Loans)
 
-## 1. Problem
-Borrowers struggle to compare loan options across lenders; lenders struggle to acquire high-intent applicants with consistent data.
+## 1) Scope & Decisions (approved)
+- Segment: **Consumer personal loans**
+- Geography: **Israel**
+- Offer type in V1: **Indicative pre-offers** (not binding)
+- Revenue: **Hybrid** = qualified lead fee + funded-loan success fee
+- UX: **Anonymized offers first**, lender identity revealed after shortlist
+- Risk depth: **Light pre-check in V1**; deeper checks in later phases
 
-## 2. Product Vision
-A neutral exchange where borrowers create one loan request and multiple lenders submit competing bids in a standardized format.
+## 2) Problem
+Borrowers cannot efficiently compare loan offers; lenders receive inconsistent leads with low conversion predictability.
 
-## 3. Users
-- Borrowers (SME first)
-- Financial institutions / lenders
-- Marketplace operations/compliance team
+## 3) Product Goal
+Create a neutral exchange where one borrower request can receive multiple standardized lender bids quickly and transparently.
 
-## 4. MVP Scope
+## 4) V1 Functional Requirements
 ### Borrower
-- Request form (amount, term, purpose, revenue/income, docs)
-- Consent + KYC flow
-- Offer comparison table
-- Accept offer flow
+- Loan request intake (amount, purpose, tenor, basic profile)
+- Consent capture and KYC-lite flow
+- Offer board with anonymized ranked pre-offers
+- Shortlist and reveal lender identity
+- Click-through to lender underwriting/completion
 
 ### Lender
-- Bid API/portal
-- Eligibility filters
-- Bid SLA + expiry
-- Offer status dashboard
+- Bid API/portal for indicative pre-offers
+- Eligibility/routing rules by risk appetite
+- Response SLA and offer expiry
+- Status dashboard and conversion reporting
 
 ### Platform
 - Rule-based matching engine
-- Bid collection/orchestration
-- Ranking + explanation layer
-- Audit logs + admin panel
+- Bid orchestration (timed window)
+- Ranking + explainability layer
+- Audit/compliance logging
 
-## 5. Out of Scope (MVP)
-- Full dynamic auctions with multi-round visibility
-- Cross-border, multi-jurisdiction launch
-- Consumer + SME simultaneously
+## 5) Non-Goals (V1)
+- Binding final credit decisions inside marketplace
+- Multi-country launch
+- Advanced ML underwriting automation
 
-## 6. Bid Schema (standard)
-- APR
-- Origination fee
+## 6) Standard Offer Schema
+- APR / effective annual rate
+- Fees (origination, admin)
 - Tenor
-- Monthly installment
-- Prepayment penalty
-- Required covenants/conditions
-- Offer expiry timestamp
+- Estimated monthly payment
+- Conditions/caveats
+- Offer validity window
 
-## 7. Ranking Model (borrower-visible)
-Score dimensions:
-1. Total cost of credit
+## 7) Ranking Model (Borrower-visible)
+Weighted score (configurable):
+1. Total borrowing cost
 2. Monthly affordability
-3. Approval confidence
-4. Time-to-funds
-5. Lender quality score
+3. Approval confidence (indicative)
+4. Time-to-money estimate
+5. Lender historical reliability score
 
-## 8. Success Metrics
-- Median time request->first bid
-- Bids/request
-- Offer acceptance rate
-- Funded rate
-- APR improvement vs baseline
-- Lender repeat participation rate
+## 8) KPIs
+- Time request → first offer
+- Avg offers per request
+- Borrower shortlist rate
+- Offer accept rate
+- Funded conversion
+- APR delta vs borrower baseline
 
-## 9. Compliance & Risk
-- KYC/AML checks
-- Consent ledger
-- Fair lending monitoring
-- Explainable ranking decisions
-- Immutable audit trail
+## 9) Compliance & Controls (Israel launch)
+- Consent + purpose limitation for data sharing
+- KYC/AML checks in intake boundary
+- Clear disclosure: indicative vs final terms
+- Immutable audit trail for offer/ranking events
 
-## 10. Business Model
-Primary: success fee on funded loans.
-Secondary: lender subscription for API + analytics.
+## 10) Phased Risk Depth
+- **V1:** light pre-check (self-reported + identity basic)
+- **V1.5:** medium checks (bank statements/open-banking where available)
+- **V2:** deeper verification (bureau + income verification + policy-driven fraud controls)

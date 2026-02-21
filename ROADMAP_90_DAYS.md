@@ -1,30 +1,26 @@
-# 90-Day Roadmap
+# Roadmap 90 Days (v2)
 
-## Phase 1 (Days 1-30): Foundation
-- Finalize PRD + legal/compliance checklist
-- Build borrower request flow and lender bid API v1
-- Implement matching rules + bid schema
-- Stand up audit logging and basic admin panel
+## Phase 1 (Days 1-30) — Build V1 Core
+- Intake + consent + KYC-lite
+- Routing engine (rules)
+- Bid API and lender sandbox
+- Anonymized comparison UI
+- Audit event logging
 
-Exit criteria:
-- End-to-end bid cycle functional in staging
+Exit: end-to-end pilot in staging with synthetic lenders.
 
-## Phase 2 (Days 31-60): Pilot
+## Phase 2 (Days 31-60) — Live Pilot
 - Onboard 3-5 lenders
-- Launch limited borrower beta
-- Tune ranking and explanation quality
-- Add lender performance scoring
+- Launch controlled borrower traffic
+- Tune ranking weights and lender SLA rules
+- Instrument full funnel analytics
 
-Exit criteria:
-- 100+ live requests, stable SLA and no critical compliance gaps
+Exit: stable offer latency + no critical compliance issues.
 
-## Phase 3 (Days 61-90): Scale Prep
-- Onboard up to 10 lenders
-- Optimize conversion funnel and pricing model
-- Add analytics dashboards + automated alerts
-- Prepare external launch playbook
+## Phase 3 (Days 61-90) — Commercial Readiness
+- Scale to 8-12 lenders
+- Implement pricing settlement (lead + success fee)
+- Add lender scorecards and fraud heuristics
+- Prepare V1.5 medium-check roadmap
 
-Exit criteria:
-- 1,000 requests processed
-- 3+ average bids/request
-- measurable APR improvement
+Exit: predictable conversion, measurable pricing value, launch readiness.

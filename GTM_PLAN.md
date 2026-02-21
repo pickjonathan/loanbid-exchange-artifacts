@@ -1,48 +1,33 @@
-# Go-To-Market Plan
+# GTM Plan v2 — Israel Consumer Loans
 
-## Beachhead Strategy
-Start with one segment and one geography:
-- Segment: SME working capital loans
-- Geography: single country/state with clear lending framework
+## 1) Market Entry Sequence
+1. **Supply first**: onboard lenders before scaling borrower acquisition
+2. **Narrow borrower ICP**: prime + near-prime personal loans
+3. **Controlled pilot**: limit daily volume to protect SLA quality
 
-## Supply First (Lenders)
-Target first 10 lenders with:
-- API sandbox + sample payloads
-- SLA guarantees for lead quality
-- Introductory pricing (reduced success fee first 90 days)
-- Weekly conversion dashboard
+## 2) Lender Acquisition (first 8-12)
+- Banks + digital lenders + broker networks
+- Pitch: structured high-intent demand + transparent performance analytics
+- Commercials: hybrid fee (lead + funded success)
 
-### Lender Onboarding Sequence
-1. ICP targeting and outreach list
-2. Technical integration workshop
-3. Legal/compliance onboarding
-4. Pilot traffic ramp (10 requests/day)
-5. Quality review and optimization
+## 3) Borrower Acquisition
+- Intent search keywords
+- Financial advisors/accountant channels
+- Affiliate partnerships with personal finance publishers
 
-## Demand Acquisition (Borrowers)
-Channels:
-- Accountant/SME advisor partnerships
-- Vertical communities and associations
-- Paid search for intent keywords
-- Embedded partner widgets
+## 4) Liquidity Tactics
+- Minimum lender response SLA
+- Auto-throttle low-quality requests
+- Dynamic routing to lenders with best response + close rates
 
-## Marketplace Liquidity Tactics
-- Prioritize requests with high bid probability
-- Set lender minimum response SLAs
-- Auto-close low-quality requests early
-- Nudge lenders with win-rate analytics
+## 5) KPI Targets (first 90 days)
+- 8+ active lenders
+- 2.5+ offers/request
+- <10 min median request→first offer
+- 18%+ borrower shortlist
+- 8%+ funded conversion from qualified requests
 
-## KPIs (weekly)
-- Active lenders
-- Bid response rate
-- Bids/request
-- Borrower acceptance rate
-- Funded volume
-- CAC payback
-
-## 90-Day Targets
-- 10 integrated lenders
-- 1,000 borrower requests
-- 3+ bids/request average
-- 20%+ offer acceptance
-- <$X blended CAC per funded loan (to be defined by market)
+## 6) Trust Strategy
+- Explain rankings in plain language
+- Show cost components transparently
+- Label all offers as indicative until lender underwriting confirms

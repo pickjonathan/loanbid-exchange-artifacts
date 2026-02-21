@@ -1,59 +1,46 @@
-# Architecture — LoanBid Exchange
+# Architecture v2 — LoanBid Exchange
 
-## Logical Components
-- Identity & Consent Service
-- Borrower Request Service
-- Matching Service
-- Bidding Service
-- Ranking & Explainability Service
-- Compliance & Audit Service
-- Lender Integration API Gateway
-- Borrower Web App
-- Lender Portal/API
+## 1) Core Services
+- **Borrower Intake**: request form, consent, KYC-lite
+- **Routing Engine**: lender eligibility + appetite rules
+- **Bid Orchestrator**: invitations, SLA timers, offer collection
+- **Ranking Service**: normalized scoring + explanations
+- **Lender Connector**: API adapters for lender systems
+- **Compliance/Audit**: immutable event ledger + policy checks
+- **Analytics**: funnel, lender quality, pricing outcomes
 
-## Event Flow
+## 2) End-to-End Flow
 ```mermaid
 flowchart LR
-A[Borrower submits request] --> B[Consent + KYC]
-B --> C[Matching engine selects eligible lenders]
-C --> D[Bid invitations sent]
-D --> E[Lenders submit bids]
-E --> F[Ranking + explanation]
-F --> G[Borrower compares offers]
-G --> H[Borrower accepts offer]
-H --> I[Lender underwriting finalization]
-I --> J[Disbursement + settlement]
-J --> K[Audit + analytics]
+A[Borrower request] --> B[KYC-lite + consent]
+B --> C[Eligibility routing]
+C --> D[Invite lenders]
+D --> E[Indicative pre-offers]
+E --> F[Anonymized ranking board]
+F --> G[Borrower shortlist]
+G --> H[Reveal lender identities]
+H --> I[Redirect to lender underwriting]
+I --> J[Funded / lost outcome]
+J --> K[Revenue settlement + analytics]
 ```
 
-## Service Topology
-```mermaid
-graph TD
-UI[Borrower App] --> API[API Gateway]
-LP[Lender Portal/API] --> API
-API --> ID[Identity/Consent]
-API --> LR[Loan Request Service]
-API --> MT[Matching Service]
-API --> BD[Bidding Service]
-API --> RK[Ranking Service]
-API --> CM[Compliance Service]
-BD --> BUS[(Event Bus)]
-MT --> BUS
-RK --> BUS
-CM --> AUD[(Immutable Audit Log)]
-LR --> DB[(Transactional DB)]
-BD --> DB
-RK --> WH[(Analytics Warehouse)]
-```
+## 3) Data Contracts
+### Borrower Request
+- requestId, borrowerProfileLight, amount, tenor, purpose, consentRef, createdAt
 
-## Data Stores
-- Transactional DB: requests, bids, sessions, statuses
-- Audit Log (append-only): consents, bid updates, ranking rationale, decision events
-- Warehouse: performance, cohort, lender quality analytics
+### Lender Offer
+- offerId, requestId, lenderAnonId, apr, fees, tenor, monthlyEstimate, conditions, expiry, submittedAt
 
-## Security Baseline
-- Encryption at rest + transit
-- Signed lender API requests
-- RBAC for internal operators
-- PII tokenization for non-essential services
-- Tamper-evident audit records
+### Outcome
+- status (shortlisted/accepted/funded/declined), fundedAmount, lenderId, timestamps
+
+## 4) Security & Trust
+- Tokenized PII boundaries
+- Signed API requests between platform and lenders
+- Full event audit for ranking and disclosures
+- Separation of offer scoring from business settlement logic
+
+## 5) Israel Launch Considerations
+- Localized disclosure language for indicative vs final terms
+- Policy hooks for legal text/versioning
+- Audit export capability for regulator/legal review
